@@ -1,12 +1,46 @@
 @import 'variables';
+@import 'reset';
+
+html {
+  height: 100%;
+}
 
 body {
-  max-width: 1200px;
-  margin: 0 auto;
+  min-height: 100%;
+  margin: 0;
   color: $primary-color;
+}
+
+.wrapper {
+  overflow: hidden;
+
+  :after {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
 }
 
 header {
   height: 30px;
+  background: $primary-color;
+}
+
+nav, aside {
+  float: left;
+  width: 25%;
+}
+
+article {
+  float: left;
+  width: 50%;
+}
+
+footer {
+  // position: absolute;
+  // width: 100%;
+  height: 50px;
+  // bottom: 0;
   background: $primary-color;
 }

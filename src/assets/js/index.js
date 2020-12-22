@@ -1,4 +1,11 @@
 (() => {
+  const $window = $(window);
+  const $document = $(document);
+  const $html = $('html');
+  const $header = $('header');
+  const $main = $('main');
+  const $footer = $('footer');
+
   // const smoothScroll = (settings = {}) => {
   //   const defaults = {
   //     selector: '',
@@ -50,8 +57,28 @@
     });
   };
 
+  const fixFooter = () => {
+    const htmlOuterHeight = $html.outerHeight(true);
+    const headerOuterHeight = $header.outerHeight(true);
+    const footerOuterHeight = $footer.outerHeight(true);
+
+    $main.css({
+      'min-height': htmlOuterHeight - headerOuterHeight - footerOuterHeight,
+    });
+  }
+
 
   $(() => {
+    highlightCode();
+    fixFooter();
+
+
+    $window.on('resize', () => {
+      fixFooter();
+    });
+
+
+
     // smoothScroll({
     //   selector: '.bd-toc a',
     //   offset: 0,
@@ -59,7 +86,8 @@
     //   offset: - $('header').outerHeight(),
     // });
 
-    highlightCode();
+
+
     // waypoint();
 
 

@@ -3,8 +3,16 @@
   <%- include(`../parts/head.ejs`); %>
   <body>
     <%- include(`../parts/header.ejs`) %>
-    <%- include(`../parts/table-of-contents.ejs`, { toc }) %>
-    <%- contents %>
+
+    <main>
+      <div class="wrapper">
+        <nav><%- include(`../parts/navbar.ejs`); %></nav>
+        <article><%- contents %></article>
+        <aside><%- include(`../parts/table-of-contents.ejs`, { toc }) %></aside>
+      </div>
+    </main>
+
+    <%- include(`../parts/footer.ejs`); %>
     <%- include(`../parts/foot.ejs`); %>
   </body>
 </html>

@@ -1,16 +1,14 @@
 FROM node:12.16.2-alpine
 
-# ENV SASS_BINARY_NAME=linux-x64-57
-
-# RUN apk add --update \
-#     python \
-#     python-dev \
-#     py-pip \
-#   && rm -rf /var/cache/apk/*
-
 RUN npm i -g http-server@0.12.3 nodemon@2.0.3
 WORKDIR /www
 
-COPY . .
+COPY ./package.json ./package.json
+COPY ./package-lock.json ./package-lock.json
+
+COPY ./generator/package.json ./generator/package.json
+COPY ./generator/package-lock.json ./generator/package-lock.json
 
 RUN npm i
+
+COPY . .

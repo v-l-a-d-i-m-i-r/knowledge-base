@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd ./generator && npm i",
+    "postinstall": "npm install --prefix generator",
     "build": "node ./scripts/build.js"
   },
   "repository": {
@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/v-l-a-d-i-m-i-r/knowledge-base/issues"
   },
-  "homepage": "https://github.com/v-l-a-d-i-m-i-r/knowledge-base#readme",
-  "devDependencies": {
-    "lerna": "3.20.2"
-  }
+  "homepage": "https://github.com/v-l-a-d-i-m-i-r/knowledge-base#readme"
 }
