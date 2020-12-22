@@ -1,0 +1,12 @@
+@import 'variables';
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: $primary-color;
+}
+
+header {
+  height: 30px;
+  background: $primary-color;
+}

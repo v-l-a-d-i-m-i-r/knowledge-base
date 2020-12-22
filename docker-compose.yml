@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  serve:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/www
+      - /www/build
+      - /www/node_modules
+      # - /www/generator/node_modules
+    entrypoint: '
+      sh -ce "
+        nodemon --delay 100ms --exec \"fuser -k 8080/tcp; npm run build; http-server ./build -c-1\" --ignore build --ext js,json,ejs,md,css
+      "
+    '

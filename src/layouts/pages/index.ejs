@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en">
+  <%- include(`../parts/head.ejs`); %>
+  <body>
+    <%- include(`../parts/header.ejs`) %>
+    <%- include(`../parts/table-of-contents.ejs`, { toc }) %>
+    <%- contents %>
+    <%- include(`../parts/foot.ejs`); %>
+  </body>
+</html>

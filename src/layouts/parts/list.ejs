@@ -1,0 +1,10 @@
+<ul>
+  <% for (const { id, title, children } of items ) {%>
+    <li>
+      <a href="#<%- id %>"><%- title %></a>
+      <% if (children) { %>
+        <%- include('list.ejs', { items: children }); %>
+      <% } %>
+    </li>
+  <% } %>
+</ul>
