@@ -70,12 +70,12 @@
 
   $(() => {
     highlightCode();
-    fixFooter();
+    // fixFooter();
 
 
-    $window.on('resize', () => {
-      fixFooter();
-    });
+    // $window.on('resize', () => {
+    //   fixFooter();
+    // });
 
 
 

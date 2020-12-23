@@ -1,4 +1,5 @@
 const Metalsmith = require('metalsmith');
+const htmlMinifier = require("metalsmith-html-minifier");
 const sass = require('metalsmith-sass');
 const pageBuilder = require('./page-builder');
 
@@ -22,6 +23,7 @@ const buildPages = (dirname, { source, destination, layout } = {}) => {
   metalsmith.source(source);
   metalsmith.destination(destination);
   metalsmith.use(pageBuilder(layout));
+  metalsmith.use(htmlMinifier());
   metalsmith.clean(true);
 
   return metalsmith.buildAsync();

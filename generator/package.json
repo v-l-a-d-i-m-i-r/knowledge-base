@@ -11,6 +11,7 @@
     "front-matter": "3.1.0",
     "frontmatter": "0.0.3",
     "metalsmith": "2.3.0",
+    "metalsmith-html-minifier": "4.0.1",
     "metalsmith-sass": "1.7.0",
     "ramda": "0.27.0",
     "showdown": "1.9.1"
