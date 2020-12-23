@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm install --prefix generator",
+    "test": "npm run test --prefix generator",
     "build": "node ./scripts/build.js"
   },
   "repository": {

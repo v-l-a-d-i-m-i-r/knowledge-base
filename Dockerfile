@@ -6,10 +6,10 @@ WORKDIR /www
 COPY ./package.json ./package.json
 COPY ./package-lock.json ./package-lock.json
 
-RUN npm i
-
 COPY ./generator/package.json ./generator/package.json
 COPY ./generator/package-lock.json ./generator/package-lock.json
+
+RUN npm i
 
 # hook to avoid isssue with "npm install --prefix generator" command
 RUN cd ./generator && npm i
