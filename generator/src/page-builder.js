@@ -20,7 +20,7 @@ module.exports = ({ default: defaultLayout, directory }) => (files, metalsmith, 
       {
         title: 'Default titile',
         contents: converter.makeHtml(fileData.contents.toString('utf-8')),
-        toc: buildToc(fileData.contents)
+        toc: buildToc(fileData.contents.toString('utf-8'))
       },
       { filename: layoutPath }
     );

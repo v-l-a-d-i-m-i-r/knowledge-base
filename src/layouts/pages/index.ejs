@@ -2,17 +2,28 @@
 <html lang="en">
   <%- include(`../parts/head.ejs`); %>
   <body>
-    <%- include(`../parts/header.ejs`) %>
+    <!-- <%- include(`../parts/header.ejs`) %> -->
+    <nav><%- include(`../parts/navbar.ejs`); %></nav>
+    <hr>
+
+
 
     <main>
-      <div class="wrapper">
-        <nav><%- include(`../parts/navbar.ejs`); %></nav>
-        <article><%- contents %></article>
-        <aside><%- include(`../parts/table-of-contents.ejs`, { toc }) %></aside>
-      </div>
+      <section class="toc">
+        <div class="wrapper">
+          <%- include(`../parts/table-of-contents.ejs`, { toc }) %>
+        </div>
+      </section>
+      <hr>
+      <section class="toc">
+        <div class="wrapper">
+          <%- contents %>
+        </div>
+      </section>
     </main>
+    <hr>
 
-    <%- include(`../parts/footer.ejs`); %>
+    <!-- <%- include(`../parts/footer.ejs`); %> -->
     <%- include(`../parts/foot.ejs`); %>
   </body>
 </html>

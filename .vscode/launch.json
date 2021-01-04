@@ -12,6 +12,20 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/scripts/build.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/generator/node_modules/jest/bin/jest",
+      "args": [
+        "${fileBasename}",
+        "--config",
+        "./generator/jest.config.js"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true
     }
   ]
 }

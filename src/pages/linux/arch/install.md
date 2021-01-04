@@ -111,7 +111,7 @@ echo -e "KEYMAP=us\nFONT=cyr-sun16" > /etc/vconsole.conf
 echo "my-pc" > /etc/hostname
 ```
 
-### 7.7 Se the users and passwords
+#### 7.7 Se the users and passwords
 ``` sh
 #set the password for root
 passwd

@@ -1,5 +1,7 @@
 const R = require('ramda');
 
+const removeCodeBlocks = string => string.replace(/`{3}((.|[\r\n])*?)`{3}/gm, '');
+
 const getHeaders = mdString => {
   const regex = /^(#+)(.*)$/gm;
   const result = [];
@@ -57,15 +59,38 @@ const mapHeaders = headerObjects => {
   )(headerObjects);
 };
 
-const buildTree = (items, level = 1) => items
-  .reduce((acc, item, index) => (item.level === level ? [...acc, { item, index}] : acc), [])
-  .map((itemInLevel, indexInLevel, levelItems) => {
-    const nextItemInLevel = levelItems[indexInLevel + 1];
-    const children = items.slice(itemInLevel.index + 1, nextItemInLevel && nextItemInLevel.index);
+const groupHeaders = (items) => {
+  const groups = [];
 
-    return children.length
-      ? { ...itemInLevel.item, children: buildTree(children, level + 1) }
-      : { ...itemInLevel.item };
-  });
+  if (!items.length) {
+    return groups;
+  }
 
-module.exports = R.pipe(R.defaultTo(''), getHeaders, mapHeaders, buildTree);
+  const firstItemLevel = items[0].level;
+
+  for (let itemIndex = 0, groupIndex = -1; itemIndex < items.length; itemIndex++) {
+    const item = items[itemIndex];
+
+    if (item.level <= firstItemLevel) {
+      groups.push(item);
+      groupIndex++;
+
+      continue;
+    }
+
+    const group = groups[groupIndex];
+    const children = group.children || [];
+    children.push(item);
+    group.children = children;
+  }
+
+  return groups.map(group => group.children ? { ...group, children: groupHeaders(group.children) } : group);
+}
+
+module.exports = R.pipe(
+  R.defaultTo(''),
+  removeCodeBlocks,
+  getHeaders,
+  mapHeaders,
+  groupHeaders
+);
