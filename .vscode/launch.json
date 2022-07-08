@@ -6,6 +6,7 @@
   "configurations": [
     {
       "type": "node",
+      "runtimeVersion": "12.16.2",
       "request": "launch",
       "name": "Build",
       "skipFiles": [
@@ -15,16 +16,15 @@
     },
     {
       "type": "node",
+      "runtimeVersion": "12.16.2",
       "request": "launch",
       "name": "Jest Current File",
       "program": "${workspaceFolder}/generator/node_modules/jest/bin/jest",
       "args": [
         "${fileBasename}",
         "--config",
-        "./generator/jest.config.js"
+        "${workspaceFolder}/generator/jest.config.js"
       ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true
     }
   ]
