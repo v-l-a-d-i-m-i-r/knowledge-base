@@ -1,6 +1,6 @@
 FROM node:12.16.2-alpine
 
-RUN npm i -g http-server@0.12.3 nodemon@2.0.3
+RUN npm i -g nodemon@2.0.3 live-server@1.2.2 concurrently@7.3.0
 WORKDIR /www
 
 COPY ./package.json ./package.json

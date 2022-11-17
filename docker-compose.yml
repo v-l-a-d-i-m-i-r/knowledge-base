@@ -13,5 +13,6 @@ services:
       - /www/generator/node_modules
     entrypoint: >
       sh -ce "
-        nodemon --delay 100ms --exec \"fuser -k 8080/tcp; npm run build; http-server ./build -c-1\" --ignore build --ext js,json,ejs,md,css,scss
+        npm run build;
+        concurrently -k 'nodemon --delay 100ms --exec \"npm run build\" --ignore ./build/ --ext js,json,ejs,md,css,scss' 'live-server --port=8080 --no-browser ./build/'
       "
