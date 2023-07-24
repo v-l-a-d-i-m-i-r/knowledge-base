@@ -2,67 +2,67 @@
 
 ## Var 1 (using dns plugin)
 
-1. ### Install dnsmasq:
-    ``` sh
-    sudo pacman -S dnsmasq
-    ```
+### 1. Install dnsmasq:
+``` sh
+sudo pacman -S dnsmasq
+```
 
-2. ### Configure NetworkManager (/etc/NetworkManager/NetworkManager.conf):
-    ``` sh
-    [main]
-      plugins=ifcfg-rh,ibft
-      dns=dnsmasq
-    ```
+### 2. Configure NetworkManager (/etc/NetworkManager/NetworkManager.conf):
+``` sh
+[main]
+  plugins=ifcfg-rh,ibft
+  dns=dnsmasq
+```
 
-3. ### Configure dnsmasq (/etc/NetworkManager/dnsmasq.d/cache.conf):
-    ``` sh
-    cache-size=1000
-    no-negcache
-    ```
+### 3. Configure dnsmasq (/etc/NetworkManager/dnsmasq.d/cache.conf):
+``` sh
+cache-size=1000
+no-negcache
+```
 
-4. ### Restart NetworkManager (make sure dnsmasq service is disabled):
-    ``` sh
-    sudo systemctl restart NetworkManager
-    ```
+### 4. Restart NetworkManager (make sure dnsmasq service is disabled):
+``` sh
+sudo systemctl restart NetworkManager
+```
 
 
 ## Var 2 (using resolvconf)
 
-1. ### Install dnsmasq and openresolv:
-    ``` sh
-    sudo pacman -S dnsmasq openresolv
-    ```
+### 1. Install dnsmasq and openresolv:
+``` sh
+sudo pacman -S dnsmasq openresolv
+```
 
-2. ### Configure NetworkManager (/etc/NetworkManager/NetworkManager.conf):
-    ``` sh
-    [main]
-      plugins=ifcfg-rh,ibft
-      dns=default 
-      rc-manager=resolvconf
-    ```
+### 2. Configure NetworkManager (/etc/NetworkManager/NetworkManager.conf):
+``` sh
+[main]
+  plugins=ifcfg-rh,ibft
+  dns=default 
+  rc-manager=resolvconf
+```
 
-3. ### Configure dnsmasq (/etc/dnsmasq.conf):
-    ``` sh
-    cache-size=1000
-    no-negcache
-    ```
+### 3. Configure dnsmasq (/etc/dnsmasq.conf):
+``` sh
+cache-size=1000
+no-negcache
+```
 
-4. ### Add dnsmasq as a first nameserver configuring openresolv (/etc/resolv.conf.head:
-    ``` sh
-    # start /etc/resolv.conf.head
+### 4. Add dnsmasq as a first nameserver configuring openresolv (/etc/resolv.conf.head:
+``` sh
+# start /etc/resolv.conf.head
 
-    name_servers=127.0.0.1
+name_servers=127.0.0.1
 
-    # end /etc/resolv.conf.head
-    ```
+# end /etc/resolv.conf.head
+```
 
-5. ### Enable and start dnsmasq service:
-    ``` sh
-    sudo systemctl enable dnsmasq
-    sudo systemctl start dnsmasq
-    ```
+### 5. Enable and start dnsmasq service:
+``` sh
+sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
+```
 
-6. ### Restart the system
+### 6. Restart the system
 
 
 ## See also:

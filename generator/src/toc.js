@@ -1,5 +1,3 @@
-const R = require('ramda');
-
 const removeCodeBlocks = string => string.replace(/`{3}((.|[\r\n])*?)`{3}/gm, '');
 
 const getHeaders = mdString => {
@@ -18,7 +16,7 @@ const buildId = () => {
   const idHash = {};
 
   return string => {
-    const defaultId = R.pipe(R.replace(/[\s\(\)\.]*/g, ''), R.toLower)(string);
+    const defaultId = string.replace(/[\s\(\)\.]*/g, '').toLowerCase();
 
     if (!idHash[defaultId]) {
       idHash[defaultId] = true;
@@ -45,9 +43,9 @@ const buildId = () => {
 const mapHeaders = headerObjects => {
   const buildIdFromTitle = buildId();
 
-  return R.map(
+  return headerObjects.map(
     ([_, hashes, text]) => {
-      const title = R.trim(text);
+      const title = text.trim();
       const id = buildIdFromTitle(title);
 
       return {
@@ -56,7 +54,7 @@ const mapHeaders = headerObjects => {
         id,
       };
     }
-  )(headerObjects);
+  );
 };
 
 const groupHeaders = (items) => {
@@ -87,10 +85,9 @@ const groupHeaders = (items) => {
   return groups.map(group => group.children ? { ...group, children: groupHeaders(group.children) } : group);
 }
 
-module.exports = R.pipe(
-  R.defaultTo(''),
-  removeCodeBlocks,
-  getHeaders,
-  mapHeaders,
-  groupHeaders
-);
+module.exports = (mdString = '') => {
+  const contentStringWithoutCodeBlocks = removeCodeBlocks(mdString);
+  const headersObjects = getHeaders(contentStringWithoutCodeBlocks);
+  const mappedHeaders = mapHeaders(headersObjects);
+  return groupHeaders(mappedHeaders);
+};
