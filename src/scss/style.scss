@@ -1,0 +1,97 @@
+@use 'variables';
+@use 'mixins';
+@use 'article';
+
+html {
+  scroll-padding-top: variables.$header-height;
+}
+
+* {
+  box-sizing: border-box;
+  color: variables.$primary-fg-color;
+}
+
+body {
+  margin: 0;
+  background-color: variables.$primary-bg-color;
+  color: variables.$primary-fg-color;
+
+  @include mixins.font;
+}
+
+h1 {
+  @include mixins.font(variables.$font-weight-bold);
+
+  font-size: 2rem;
+}
+
+em {
+  @include mixins.font(variables.$font-weight-regular, variables.$font-style-italic);
+}
+
+strong {
+  @include mixins.font(variables.$font-weight-bold);
+}
+
+strong em {
+  @include mixins.font(variables.$font-weight-bold, variables.$font-style-italic);
+}
+
+.layout-header {
+  // position: sticky;
+  // top: 0;
+  // height: 0;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+
+.layout-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.layout-content {
+  flex-grow: 1;
+  padding-top: variables.$header-height; // header height
+  padding-bottom: 30px; // footer height
+}
+
+.layout-footer {
+  flex-grow: 0;
+}
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  background-color: variables.$secondary-bg-color;
+}
+
+:not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: variables.$secondary-bg-color;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 6px;
+  border: none;
+  background: variables.$info-color;
+  color: variables.$primary-bg-color;
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background: variables.$info-color;
+  }
+}

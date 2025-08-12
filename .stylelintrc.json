@@ -1,0 +1,26 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-property-sort-order-smacss"],
+  "rules": {
+    "scss/dollar-variable-pattern": "^([a-z]+-?)*[a-z]+$",
+    "scss/percent-placeholder-pattern": "^([a-z]+-?)*[a-z]+$",
+    "scss/at-mixin-pattern": "^([a-z]+-?)*[a-z]+$",
+    "selector-class-pattern": [
+      "^([a-z]+-?)*[a-z]+((__|-)[a-z0-9]+(--[a-z0-9]+)?)*$",
+      {
+        "message": "Expected class selector to use kebab-case with BEM notation"
+      }
+    ],
+    "custom-property-pattern": "^([a-z]+-?)*[a-z]+$",
+    "length-zero-no-unit": true,
+    "max-nesting-depth": 3,
+    "selector-max-specificity": "0,3,0",
+    "scss/at-mixin-argumentless-call-parentheses": "never",
+    "scss/dollar-variable-empty-line-before": "never",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-blockless", "first-nested"]
+      }
+    ]
+  }
+}

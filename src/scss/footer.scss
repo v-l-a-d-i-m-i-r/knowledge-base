@@ -1,0 +1,16 @@
+@use './variables' as variables;
+
+.footer {
+  background-color: variables.$secondary-bg-color;
+
+  .footer__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .footer__text {
+      margin: 0;
+      line-height: 1.5rem;
+    }
+  }
+}

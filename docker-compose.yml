@@ -1,18 +1,18 @@
-version: '3'
+version: '3.6'
 
 services:
-  serve:
+  knowledge-base-dev:
+    container_name: knowledge-base-dev
     build:
       context: .
-    ports:
-      - 8080:8080
+      dockerfile: Dockerfile.dev
     volumes:
-      - ./:/www
-      - /www/build
-      - /www/node_modules
-      - /www/generator/node_modules
-    entrypoint: >
-      sh -ce "
-        npm run build;
-        concurrently -k 'nodemon --delay 100ms --exec \"npm run build\" --ignore ./build/ --ext js,json,ejs,md,css,scss' 'live-server --port=8080 --no-browser ./build/'
-      "
+      - ./src:/www/src
+    environment:
+      NODE_ENV: dev
+    ports:
+      - 3000:3000
+    command: |-
+      sh -ce '
+        npm run dev;
+      '

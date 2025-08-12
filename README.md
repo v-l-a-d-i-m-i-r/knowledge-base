@@ -1,5 +1,22 @@
-# knowledge-base
+https://yeahlowflicker.com/blog/implementing-code-syntax-highlight-to-markdown-it
 
-https://stackoverflow.com/questions/1319657/javascript-to-convert-markdown-textile-to-html-and-ideally-back-to-markdown-t
-https://codesandbox.io/s/markdown-based-code-playground-forked-06c7my?file=/src/index.js
-https://github.com/markedjs/marked
+## Docker
+
+### Production
+
+Build and run the production image with nginx:
+
+```bash
+docker build -t knowledge-base .
+docker run -p 8080:80 knowledge-base
+```
+
+The site will be available at http://localhost:8080.
+
+### Development
+
+```bash
+docker-compose up
+```
+
+The dev server will be available at http://localhost:3000 with hot reload.
