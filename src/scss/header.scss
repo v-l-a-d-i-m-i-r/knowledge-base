@@ -1,0 +1,42 @@
+@use './variables' as variables;
+
+.header {
+  padding: 0 16px;
+  background-color: variables.$secondary-bg-color;
+
+  .header__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__logo {
+    margin-right: 20px;
+    color: variables.$primary-fg-color;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .header__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .header__menu-item {
+    margin: 0 8px;
+  }
+
+  .header__menu-item-link {
+    margin: 0 8px;
+    color: variables.$primary-fg-color;
+    text-decoration: none;
+
+    &.header__menu-item-link--active {
+      color: variables.$info-color;
+    }
+  }
+}

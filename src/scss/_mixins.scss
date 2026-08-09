@@ -1,0 +1,7 @@
+@use 'variables';
+
+@mixin font($weight: variables.$font-weight-regular, $style: variables.$font-style-normal) {
+  font-family: variables.$font-family-base;
+  font-style: $style;
+  font-weight: $weight;
+}
